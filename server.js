@@ -27,18 +27,18 @@ app.use(express.json());
 app.use(flash());
 
 // PASSPORT CONFIG
-// app.use(
-//     require("express-session")({
-//       secret: "Tito is the man!",
-//       resave: false,
-//       saveUninitialized: false
-//     })
-//   );
-//   app.use(passport.initialize());
-//   app.use(passport.session());
-//   passport.use(new LocalStrategy(User.authenticate()));
-//   passport.serializeUser(User.serializeUser());
-//   passport.deserializeUser(User.deserializeUser());
+app.use(
+    require("express-session")({
+      secret: "Tito is the man!",
+      resave: false,
+      saveUninitialized: false
+    })
+  );
+  app.use(passport.initialize());
+  app.use(passport.session());
+  passport.use(new LocalStrategy(db.User.authenticate()));
+  passport.serializeUser(db.User.serializeUser());
+  passport.deserializeUser(db.User.deserializeUser());
 
 app.use("/", indexRoutes);
 
