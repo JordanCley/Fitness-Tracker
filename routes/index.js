@@ -14,7 +14,7 @@ router.get("/home", function(req, res) {
 
 router.get("/dashboard/:id", middleware.isLoggedIn, middleware.checkUser,  function(req, res) {
   db.User.findById(req.params.id).then(dbUser => {
-    console.log(dbUser);
+    // console.log(dbUser);
     res.render("dashboard", { User: dbUser });
   });
 });

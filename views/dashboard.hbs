@@ -5,30 +5,30 @@
     <p>Total Duration:</p>
     <p>Total Number Of Exercises</p>
 
-    <button>Create New Session</button>
+    <button id="createSession">Create New Session</button>
 </div>
 
-<form action="" id="workoutForm" class="container">
-    <label for="exerciseType">Choose exercise type</label>
-    <select name="exerciseType" id="" placeholder="Choose exercise type">
-        <option value="cardio">Cardio</option>
-        <option selected value="weights">Weights</option>
-    </select>
-    <label for="name">Name of exercise</label>
-    <input type="text" name="name" placeholder="Bench Press">
-    <label for="reps">Reps</label>
-    <input type="number" name="reps" placeholder="10">
-    <label for="weight">Weight (lbs)</label>
-    <input type="number" name="weight" placeholder="200">
-    <label for="duration">Duration</label>
-    <input type="number" name="duration" placeholder="20">
-    <label for="Distance">Distance</label>
-    <input type="number" name="distance" placeholder="20">
-    <button>Complete</button>
-    <button>Add Another</button>
-</form>
-
-
+<div class="container">
+    <form action="" id="workoutForm">
+        <label for="exerciseType">Choose exercise type</label>
+        <select name="exerciseType" id="exerciseType" placeholder="Choose exercise type">
+            <option id="cardio" value="cardio">Cardio</option>
+            <option selected value="weights">Weights</option>
+        </select>
+        <label for="name">Name of exercise</label>
+        <input type="text" name="name" id="exerciseName" placeholder="Bench Press">
+        <label id="repLabel"for="reps">Reps</label>
+        <input type="number" name="reps" id="reps" placeholder="10">
+        <label id="weightLabel" for="weight">Weight (lbs)</label>
+        <input type="number" name="weight" id="weight" placeholder="200">
+        <label for="duration">Duration</label>
+        <input type="number" name="duration" id="duration" placeholder="20">
+        <label id="distanceLabel" for="Distance">Distance</label>
+        <input type="number" name="distance" id="distance" placeholder="20">
+        <input id="complete" type="submit" value="Complete">
+    </form>
+    <button id="addAnother">Add Another</button>
+</div>
 <br>
 
 

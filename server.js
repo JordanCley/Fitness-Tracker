@@ -12,6 +12,7 @@ const app = express();
 const db = require("./models");
 
 const indexRoutes = require("./routes/index");
+const apiRoutes = require("./routes/apiRoutes");
 
 const PORT = process.env.PORT || 8080;
 
@@ -51,6 +52,9 @@ passport.deserializeUser(db.User.deserializeUser());
 app.use(express.static(path.join(__dirname, "/public")));
 
 app.use("/", indexRoutes);
+app.use("/api", apiRoutes);
+
+
 
 app.listen(PORT, () => {
   console.log(`Server started on PORT ${PORT}`);
