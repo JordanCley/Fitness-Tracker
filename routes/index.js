@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const db = require("../models");
 const passport = require("passport");
+const middleware = require("../middleware");
 // const LocalStrategy = require("passport-local");
 
 router.get("/", function(req, res) {
@@ -11,7 +12,7 @@ router.get("/home", function(req, res) {
   res.render("home");
 });
 
-router.get("/dashboard/:id", isLoggedIn, checkUser,  function(req, res) {
+router.get("/dashboard/:id", middleware.isLoggedIn, middleware.checkUser,  function(req, res) {
   db.User.findById(req.params.id).then(dbUser => {
     console.log(dbUser);
     res.render("dashboard", { User: dbUser });
@@ -68,27 +69,6 @@ router.get("/logout", function(req, res) {
   res.redirect("home");
 });
 
-function isLoggedIn(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next();
-  }
-  res.redirect("/login");
-}
 
-function checkUser(req, res, next){
-  db.User.findById(req.params.id, function(err, foundUser){
-    if(err || !foundUser){
-      console.log(err);
-      // flash error message
-      res.redirect("/");
-    } else if(foundUser._id.equals(req.user._id)){
-      req.user = foundUser;
-      next();
-    } else {
-      // flash error message/dont have permission
-      res.redirect("/");
-    }
-  })
-}
 
 module.exports = router;
