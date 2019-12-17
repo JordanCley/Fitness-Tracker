@@ -19,9 +19,10 @@ mongoose.connect(
   process.env.MONGODB_URL || "mongodb://localhost/fitness_tracker_db",
   { useUnifiedTopology: true, useNewUrlParser: true }
 );
+
 app.engine("hbs", hbs({ defaultLayout: "main.hbs" }));
 app.set("view engine", "hbs");
-app.use(express.static(path.join(__dirname, "/public")));
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // app.use(flash());
@@ -47,6 +48,7 @@ passport.deserializeUser(db.User.deserializeUser());
 //   res.locals.success = req.flash("success");
 //   next();
 // });
+app.use(express.static(path.join(__dirname, "/public")));
 
 app.use("/", indexRoutes);
 

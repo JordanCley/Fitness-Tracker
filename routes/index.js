@@ -37,7 +37,7 @@ router.post("/register", function(req, res) {
       return res.render("register");
     }
     passport.authenticate("local")(req, res, function() {
-      req.flash("success", `Welcome to Fitness-Tracker ${user.username}`);
+      // req.flash("success", `Welcome to Fitness-Tracker ${user.username}`);
       res.redirect(`/dashboard/${user._id}`);
     });
   });
@@ -55,7 +55,7 @@ router.post('/login', function(req, res, next) {
     if (!user) { return res.redirect("/login"); }
     req.logIn(user, function(err) {
       if (err) { return next(err); }
-      req.flash("success", `Welcome to Fitness-Tracker ${user.username}`)
+      // req.flash("success", `Welcome to Fitness-Tracker ${user.username}`)
       return res.redirect(`/dashboard/${user._id}`);
     });
   })(req, res, next);

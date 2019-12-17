@@ -6,6 +6,7 @@ const ExerciseSchema = new Schema({
     reps: Number,
     weight: Number,
     duration: Number,
+    distance: Number,
     isTypeCardio: false 
 });
 
