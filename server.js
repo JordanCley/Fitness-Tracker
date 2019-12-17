@@ -24,21 +24,29 @@ app.set("view engine", "hbs");
 app.use(express.static(path.join(__dirname, "/public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(flash());
+// app.use(flash());
+
 
 // PASSPORT CONFIG
 app.use(
-    require("express-session")({
-      secret: "Tito is the man!",
-      resave: false,
-      saveUninitialized: false
-    })
-  );
-  app.use(passport.initialize());
-  app.use(passport.session());
-  passport.use(new LocalStrategy(db.User.authenticate()));
-  passport.serializeUser(db.User.serializeUser());
-  passport.deserializeUser(db.User.deserializeUser());
+  require("express-session")({
+    secret: "Tito is the man!",
+    resave: false,
+    saveUninitialized: false
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(db.User.authenticate()));
+passport.serializeUser(db.User.serializeUser());
+passport.deserializeUser(db.User.deserializeUser());
+
+// app.use(function(req, res, next) {
+//   // res.locals.currentUser = req.user;
+//   res.locals.error = req.flash("error");
+//   res.locals.success = req.flash("success");
+//   next();
+// });
 
 app.use("/", indexRoutes);
 
