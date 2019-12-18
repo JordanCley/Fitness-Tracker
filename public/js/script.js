@@ -12,7 +12,6 @@ $(document).ready(function() {
 
   // GETTING ALL EXERCISES FOR EACH SESSION VIA GETSESSIONS
   getExercises = item => {
-    console.log(item.exercises);
     return item.exercises;
   };
 
@@ -59,9 +58,20 @@ $(document).ready(function() {
         // AND EXERCISES FOR EACH ONE
         sessionExercises = chartSessions.map(getExercises);
         timeStamps = chartSessions.map(getTimestamps);
+        let durationArray = [];
+        for(let i = 0;i < sessionExercises.length; i++){
+          let sum = 0;
+          for(let j = 0;j < sessionExercises[i].length; j++){
+            console.log()
+            sum += sessionExercises[i][j].duration;
+          }
+          durationArray.push(sum);
+        }
+
+        console.log(durationArray);
 
         // PASSING DATA TO CHARTS FOR DISPLAY
-        charts(timeStamps, sessionExercises);
+        charts(timeStamps, durationArray);
 
         // SETTING DATA FOR WELCOME CONTAINER TO CONSTANTS
         const lastSession = chartSessions[0];
@@ -169,8 +179,12 @@ $(document).ready(function() {
     });
   };
 
+  // ==============================
+  //       <<<  CHARTS  >>>
+  // ==============================
+
   // CHARTS FUNCTION
-  charts = timeStamps => {
+  charts = (timeStamps, durationArray) => {
     Chart.defaults.global.defaultFontColor = "#FFFFFF";
     Chart.defaults.global.defaultFontSize = 16;
 
@@ -181,8 +195,8 @@ $(document).ready(function() {
         labels: timeStamps,
         datasets: [
           {
-            label: "Duration In Minutes",
-            data: [22, 11, 10, 9],
+            label: "Recent Session Durations In Minutes",
+            data: durationArray,
             backgroundColor: [
               "#2bbfcc",
               "#2bbfcc",
