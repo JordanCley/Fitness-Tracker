@@ -58,20 +58,17 @@ $(document).ready(function() {
         // AND EXERCISES FOR EACH ONE
         sessionExercises = chartSessions.map(getExercises);
         timeStamps = chartSessions.map(getTimestamps);
+
+        // LOOPING THROUGH SESSIONS AND EXH SESSION EXERCISES
+        // AND ADDING TOTAL DURATION OF EXERCISES PER SESSION
         let durationArray = [];
         for(let i = 0;i < sessionExercises.length; i++){
           let sum = 0;
           for(let j = 0;j < sessionExercises[i].length; j++){
-            console.log()
             sum += sessionExercises[i][j].duration;
           }
           durationArray.push(sum);
         }
-
-        console.log(durationArray);
-
-        // PASSING DATA TO CHARTS FOR DISPLAY
-        charts(timeStamps, durationArray);
 
         // SETTING DATA FOR WELCOME CONTAINER TO CONSTANTS
         const lastSession = chartSessions[0];
@@ -81,10 +78,19 @@ $(document).ready(function() {
 
         // LOOPING THROUGH LAST SESSIONS EXERCISES AND
         // ADDING TOTAL MINUTES OF DURATION FOR ALL
+        // ALSO GETTING ALL NAMES OF EXERCISES WITH DURATION FOR EACH
+        let exerciseNames = [];
+        let exerciseDurations = [];
         for (let i = 0; i < exerciseArray.length; i++) {
+          let name = exerciseArray[i].name;
           let duration = exerciseArray[i].duration;
+          exerciseDurations.push(duration);
+          exerciseNames.push(name);
           sum += duration;
         }
+
+         // PASSING DATA TO CHARTS FOR DISPLAY
+         charts(timeStamps, durationArray, exerciseNames, exerciseDurations);
 
         // INSERTING DATA INTO WELCOM CONTAINER
         $("#sessionDate").text(`Date: ${date}`);
@@ -97,7 +103,6 @@ $(document).ready(function() {
   // HIDING AND SHOWING APPROPRIATE INPUTS
   showInputs = () => {
     const exerciseType = $("#exerciseType").val();
-    console.log(exerciseType);
     const reps = $("#reps");
     const weight = $("#weight");
     const repLabel = $("#repLabel");
@@ -163,7 +168,6 @@ $(document).ready(function() {
       $("#distance").val("");
       $("#duration").val("");
       $("#exerciseName").val("");
-      console.log(type, name, reps, weight, duration);
       $.ajax({
         data: {
           type: type,
@@ -184,7 +188,7 @@ $(document).ready(function() {
   // ==============================
 
   // CHARTS FUNCTION
-  charts = (timeStamps, durationArray) => {
+  charts = (timeStamps, durationArray, exerciseNames, exerciseDurations) => {
     Chart.defaults.global.defaultFontColor = "#FFFFFF";
     Chart.defaults.global.defaultFontSize = 16;
 
@@ -245,23 +249,17 @@ $(document).ready(function() {
     const exerciseChart = new Chart(pieChart, {
       type: "pie",
       data: {
-        labels: [
-          "Tue Dec 17 2019",
-          "Tue Dec 17 2019",
-          "Tue Dec 17 2019",
-          "Tue Dec 17 2019",
-          "Tue Dec 17 2019"
-        ],
+        labels: exerciseNames,
         datasets: [
           {
             label: "Duration In Minutes",
-            data: [12, 19, 3, 5, 2],
+            data: exerciseDurations,
             backgroundColor: [
-              "#2b36cc",
-              "#a80505",
-              "#108709",
-              "#55057a",
-              "#e3eb15"
+              "#2bbfcc",
+              "#296369",
+              "#033a40",
+              "#86ecf7",
+              "#637d80"
             ],
             borderWidth: 2,
             borderColor: "#FFFFFF",
@@ -273,7 +271,7 @@ $(document).ready(function() {
       options: {
         title: {
           display: true,
-          text: "Exercises Performed",
+          text: "Latest Session Exercises Performed",
           fontSize: 18
         },
         legend: {

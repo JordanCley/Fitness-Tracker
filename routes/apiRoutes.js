@@ -1,7 +1,5 @@
 const router = require("express").Router();
 const db = require("../models");
-// const passport = require("passport");
-// const middleware = require("../middleware");
 let sessionId = "";
 
 
