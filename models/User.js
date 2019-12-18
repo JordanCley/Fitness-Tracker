@@ -1,14 +1,15 @@
 const mongoose = require("mongoose");
+const passportLocalMongoose = require("passport-local-mongoose");
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-    firstname: {
+    firstName: {
         type: String,
         trim: true,
         required: "Your First name is required."
     },
 
-    lastname: {
+    lastName: {
         type: String,
         trim: true,
         required: "Your Last name is required."
@@ -16,15 +17,14 @@ const UserSchema = new Schema({
 
     username: {
         type: String,
+        unique: true,
         trim: true,
         required: "Username is required."
     },
 
     password: {
         type: String,
-        trim: true,
-        required: "Password is Required",
-        validate: [({ length }) => length >= 6, "Password must be more than 6 characters."]
+        trim: true
       },
 
     email: {
@@ -41,6 +41,7 @@ const UserSchema = new Schema({
     ] 
 });
 
+UserSchema.plugin(passportLocalMongoose);
 const User = mongoose.model("User", UserSchema);
 
 module.exports = User;

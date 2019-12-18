@@ -1,15 +1,21 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const SessionSchema = new Schema({
+const SessionSchema = new Schema(
+  {
     exercises: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: "Exercise"
-        }
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Exercise"
+      }
     ],
-    duration: Number
-},{timestamps: true});
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User"
+    }
+  },
+  { timestamps: true }
+);
 
 const Session = mongoose.model("Session", SessionSchema);
- module.exports = Session;
+module.exports = Session;

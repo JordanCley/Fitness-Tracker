@@ -1,4 +1,39 @@
-<h1>This is the dashboard page for each user</h1>
+<div id="welcomeContainer" class="container">
+    <h1>Welcome to Fitness-Tracker {{User.username}}!</h1>
+    <h2>Last Workout Session</h2>
+    <p>Date:</p>
+    <p>Total Duration:</p>
+    <p>Total Number Of Exercises</p>
+
+    <button id="createSession">Create New Session</button>
+</div>
+
+<div id="formContainer" class="container">
+    <form action="" id="workoutForm">
+        <label for="exerciseType">Choose exercise type</label>
+        <select name="exerciseType" id="exerciseType" placeholder="Choose exercise type">
+            <option id="cardio" value="cardio">Cardio</option>
+            <option selected value="weights">Weights</option>
+        </select>
+        <label for="name">Name of exercise</label>
+        <input type="text" name="name" id="exerciseName" placeholder="Bench Press">
+        <label id="repLabel"for="reps">Reps</label>
+        <input type="number" name="reps" id="reps" placeholder="10">
+        <label id="weightLabel" for="weight">Weight (lbs)</label>
+        <input type="number" name="weight" id="weight" placeholder="200">
+        <label for="duration">Duration</label>
+        <input type="number" name="duration" id="duration" placeholder="20">
+        <label id="distanceLabel" for="Distance">Distance</label>
+        <input type="number" name="distance" id="distance" placeholder="20">
+        <button id="addAnother" type="submit">Add Another</button>
+        <button id="complete" type="submit">Complete</button>
+    </form>
+    
+</div>
+<br>
+
+
+
 
 <li><a href="/register">Sign Up!</a></li>
 <li><a href="/login">Login!</a></li>
