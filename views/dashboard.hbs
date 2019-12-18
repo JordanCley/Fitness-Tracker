@@ -10,25 +10,28 @@
 
 <div id="formContainer" class="container">
     <form action="" id="workoutForm">
-        <label for="exerciseType">Choose exercise type</label>
-        <select name="exerciseType" id="exerciseType" placeholder="Choose exercise type">
+        <select name="exerciseType" id="exerciseType">
+            <option value="Choose exercise type" selected disabled>Choose exercise type</option>
             <option id="cardio" value="cardio">Cardio</option>
-            <option selected value="weights">Weights</option>
+            <option value="weights">Weights</option>
         </select>
-        <label for="name">Name of exercise</label>
-        <input type="text" name="name" id="exerciseName" placeholder="Bench Press">
-        <label id="repLabel"for="reps">Reps</label>
-        <input type="number" name="reps" id="reps" placeholder="10">
-        <label id="weightLabel" for="weight">Weight (lbs)</label>
-        <input type="number" name="weight" id="weight" placeholder="200">
-        <label for="duration">Duration</label>
-        <input type="number" name="duration" id="duration" placeholder="20">
-        <label id="distanceLabel" for="Distance">Distance</label>
-        <input type="number" name="distance" id="distance" placeholder="20">
-        <button id="addAnother" type="submit">Add Another</button>
-        <button id="complete" type="submit">Complete</button>
+        <br>
+        <div id="bottomForm">
+            <label for="name">Name of exercise</label>
+            <input type="text" name="name" id="exerciseName" placeholder="Bench Press">
+            <label id="repLabel" for="reps">Reps</label>
+            <input type="number" name="reps" id="reps" placeholder="10">
+            <label id="weightLabel" for="weight">Weight (lbs)</label>
+            <input type="number" name="weight" id="weight" placeholder="200">
+            <label for="duration">Duration</label>
+            <input type="number" name="duration" id="duration" placeholder="20">
+            <label id="distanceLabel" for="Distance">Distance</label>
+            <input type="number" name="distance" id="distance" placeholder="20">
+            <button id="addAnother" type="submit">Add Another</button>
+            <button id="complete" type="submit">Complete</button>
+        </div>
     </form>
-    
+
 </div>
 <br>
 

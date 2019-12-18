@@ -12,6 +12,11 @@
     flex-direction: column;
 }
 
+#bottomForm {
+    display: flex;
+    flex-direction: column;
+}
+
 
 
 button{

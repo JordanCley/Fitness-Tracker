@@ -2,7 +2,9 @@ $(document).ready(function() {
   
   const welcomeContainer = $("#welcomeContainer");
   const formContainer = $("#formContainer");
+  const bottomForm = $("#bottomForm");
   formContainer.hide();
+  bottomForm.hide();
 
   getSessions = () => {
     $.ajax({
@@ -30,9 +32,7 @@ $(document).ready(function() {
     });
   };
 
-  
-
-  $("#exerciseType").mouseleave(function() {
+  showInputs = () => {
     const exerciseType = $("#exerciseType").val();
     console.log(exerciseType);
     const reps = $("#reps");
@@ -56,7 +56,15 @@ $(document).ready(function() {
       distance.hide();
       distanceLabel.hide();
     }
-  });
+  }
+
+  showForm = () => {
+    bottomForm.show();
+  }
+
+
+
+  $("#exerciseType").mouseleave(showInputs).click(showForm);
 
   $("#createSession").on("click", function() {
     event.stopPropagation();
