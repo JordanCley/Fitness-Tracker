@@ -1,15 +1,18 @@
 $(document).ready(function() {
+  // SELECTION OF CONTAINERS FOR HIDE AND SHOW
   const welcomeContainer = $("#welcomeContainer");
   const formContainer = $("#formContainer");
   const bottomForm = $("#bottomForm");
 
+  // GETTING UTC STAMPS VIA GETSESSIONS CONVERTING TO DATESTRING
   getTimestamps = item => {
     let date = new Date(item.createdAt);
     return date.toDateString();
   };
 
+  // GETTING ALL EXERCISES FOR EACH SESSION VIA GETSESSIONS
   getExercises = item => {
-    // console.log(item.exercises)
+    console.log(item.exercises);
     return item.exercises;
   };
 
@@ -18,12 +21,13 @@ $(document).ready(function() {
   //   let duration = item.duration;
   //   console.log(duration)
   //   return sum += duration;
-  // };
 
+  // SHOWING BOTTOM FORM
   showForm = () => {
     bottomForm.show(300);
   };
 
+  // GET REQUEST FUNCTION GETTING SESSION DATA AND HANDLING
   getSessions = () => {
     $.ajax({
       method: "GET",
@@ -34,37 +38,45 @@ $(document).ready(function() {
       let chartSessions = [];
       let sessionExercises = {};
       const sessionArray = data.sessions;
+      // CHECKING IF THERE IS ANY DATA FIRST
       if (sessionArray.length != 0) {
-        // console.log(sessionArray)
-        // console.log(sessionArray.length)
-        // console.log(sessionArray)
-        // console.log(sessionArray.length)
         let length = sessionArray.length;
+
+        // CHECKING IF THERE ARE LESS THAN 5 SESSIONS
+        // IF LESS THAN 5 SESSIONS 
         if (sessionArray.length <= 5) {
           for (let i = 0; i < length; i++) {
             chartSessions.push(sessionArray.pop());
           }
+          // MORE THAN 5 SESSION RUN FOLLOWING CODE
         } else {
           for (let i = 0; i < 5; i++) {
             chartSessions.push(sessionArray.pop());
           }
         }
 
-        console.log(chartSessions);
+        // MAPPING THROUGH LATEST SESSIONS GETTING TIMESTAMPS
+        // AND EXERCISES FOR EACH ONE
         sessionExercises = chartSessions.map(getExercises);
         timeStamps = chartSessions.map(getTimestamps);
-        charts(timeStamps, sessionExercises);
-        const lastSession = chartSessions[0];
 
-        const date = new Date(lastSession.createdAt).toString();
+        // PASSING DATA TO CHARTS FOR DISPLAY
+        charts(timeStamps, sessionExercises);
+
+        // SETTING DATA FOR WELCOME CONTAINER TO CONSTANTS
+        const lastSession = chartSessions[0];
+        const date = new Date(lastSession.createdAt).toLocaleString();
         const numExercises = lastSession.exercises.length;
         const exerciseArray = lastSession.exercises;
 
+        // LOOPING THROUGH LAST SESSIONS EXERCISES AND
+        // ADDING TOTAL MINUTES OF DURATION FOR ALL
         for (let i = 0; i < exerciseArray.length; i++) {
           let duration = exerciseArray[i].duration;
           sum += duration;
         }
 
+        // INSERTING DATA INTO WELCOM CONTAINER
         $("#sessionDate").text(`Date: ${date}`);
         $("#totalDuration").text(`Total Duration: ${sum} minutes`);
         $("#numExercises").text(`Total Number Of Exercises: ${numExercises}`);
@@ -72,6 +84,7 @@ $(document).ready(function() {
     });
   };
 
+  // HIDING AND SHOWING APPROPRIATE INPUTS
   showInputs = () => {
     const exerciseType = $("#exerciseType").val();
     console.log(exerciseType);
@@ -98,12 +111,14 @@ $(document).ready(function() {
     }
   };
 
+  // EVENT TO CALL SHOWINPUTS FUNCTION
   exerciseTypeEvent = () => {
     $("#exerciseType")
       .mouseleave(showInputs)
       .click(showForm);
   };
 
+  // EVENT TO CREATE A SESSIONBFROM CREATE BUTTON
   createSessionEvent = () => {
     $("#createSession").on("click", function() {
       event.stopPropagation();
@@ -117,11 +132,14 @@ $(document).ready(function() {
     });
   };
 
+  // APPLYING EVENTS TO WORKOUT FORM
   workoutExcerciseForm = () => {
+    // CLICK EVENT TO RELOAD PAGE ON COMPLETE
     $("#complete").on("click", function() {
       location.reload();
     });
 
+    // SUBMIT EVENT FOR WORKOUT FORM
     $("#workoutForm").on("submit", function() {
       event.preventDefault();
       const reps = $("#reps").val();
@@ -151,6 +169,7 @@ $(document).ready(function() {
     });
   };
 
+  // CHARTS FUNCTION
   charts = timeStamps => {
     Chart.defaults.global.defaultFontColor = "#FFFFFF";
     Chart.defaults.global.defaultFontSize = 16;
