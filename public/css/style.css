@@ -6,6 +6,18 @@
     margin: 5px 5px 5px 5px;
 }
 
+#chartsContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.chart {
+    background-color: #3d4661;
+    width: 800px;
+    border: 2px solid black;
+    padding: 5px 5px 5px 5px;
+    margin: 5px 5px 5px 5px;
+}
 .form {
     display: flex;
     flex-direction: column;

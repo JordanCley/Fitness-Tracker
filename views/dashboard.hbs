@@ -16,7 +16,7 @@
             <option value="weights">Weights</option>
         </select>
         <br>
-        <div class="form"  id="bottomForm">
+        <div class="form" id="bottomForm">
             <label for="name">Name of exercise</label>
             <input type="text" name="name" id="exerciseName" placeholder="Bench Press">
             <label id="repLabel" for="reps">Reps</label>
@@ -31,7 +31,6 @@
             <button id="complete" type="submit">Complete</button>
         </div>
     </form>
-
 </div>
 <br>
 
@@ -44,4 +43,22 @@
     <a href="/logout">Logout</a>
 </div>
 
+<div id="chartsContainer">
+    <div class="chart">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <div class="chart">
+        <canvas id="pieChart"></canvas>
+    </div>
+</div>
+<script type="text/javascript" src="/js/charts.js"></script>
 <script type="text/javascript" src="/js/script.js"></script>
+
+
+
+
+
+{{!-- <script>
+
+</script> --}}

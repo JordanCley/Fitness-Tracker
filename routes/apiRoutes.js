@@ -4,14 +4,17 @@ const db = require("../models");
 // const middleware = require("../middleware");
 let sessionId = "";
 
-router.get("/user/session", function(req, res){
-  db.User.findById({_id: req.user._id}).populate({path: "sessions", populate: {path: "exercises"}}).exec(function(err, dbSessions){
-    if(err){
-      console.log(err);
-    } else {
-      res.json(dbSessions);
-    }
-  })
+
+router.get("/user/session", function(req, res) {
+  db.User.findById({ _id: req.user._id })
+    .populate({ path: "sessions", populate: { path: "exercises" } })
+    .exec(function(err, dbSessions) {
+      if (err) {
+        console.log(err);
+      } else {
+        res.json(dbSessions);
+      }
+    });
 });
 
 router.post("/session/new", function(req, res) {
