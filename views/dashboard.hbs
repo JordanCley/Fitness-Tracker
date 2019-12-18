@@ -1,4 +1,4 @@
-<div class="container">
+<div id="welcomeContainer" class="container">
     <h1>Welcome to Fitness-Tracker {{User.username}}!</h1>
     <h2>Last Workout Session</h2>
     <p>Date:</p>
@@ -8,7 +8,7 @@
     <button id="createSession">Create New Session</button>
 </div>
 
-<div class="container">
+<div id="formContainer" class="container">
     <form action="" id="workoutForm">
         <label for="exerciseType">Choose exercise type</label>
         <select name="exerciseType" id="exerciseType" placeholder="Choose exercise type">
@@ -25,9 +25,10 @@
         <input type="number" name="duration" id="duration" placeholder="20">
         <label id="distanceLabel" for="Distance">Distance</label>
         <input type="number" name="distance" id="distance" placeholder="20">
-        <input id="complete" type="submit" value="Complete">
+        <button id="addAnother" type="submit">Add Another</button>
+        <button id="complete" type="submit">Complete</button>
     </form>
-    <button id="addAnother">Add Another</button>
+    
 </div>
 <br>
 

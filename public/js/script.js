@@ -1,4 +1,9 @@
 $(document).ready(function() {
+const welcomeContainer = $("#welcomeContainer");
+const formContainer = $("#formContainer");
+formContainer.hide();
+
+
   $("#exerciseType").mouseleave(function() {
     const exerciseType = $("#exerciseType").val();
     console.log(exerciseType);
@@ -25,14 +30,36 @@ $(document).ready(function() {
     }
   });
 
+  $("#createSession").on("click", function() {
+    event.stopPropagation();
+    welcomeContainer.hide();
+    formContainer.show();
+    $.ajax({
+      data: { test: "dumby data" },
+      url: "/api/session/new",
+      method: "POST"
+    }).then(function(data) {});
+  });
+
+  $("#complete").on("click", function(){
+    location.reload();
+    // formContainer.hide();
+    // welcomeContainer.show();
+  })
+
   $("#workoutForm").on("submit", function() {
     event.preventDefault();
-    const type = $("#exerciseType").val();
-    const name = $("#exerciseName").val();
     const reps = $("#reps").val();
     const weight = $("#weight").val();
     const duration = $("#duration").val();
     const distance = $("#distance").val();
+    const type = $("#exerciseType").val();
+    const name = $("#exerciseName").val();
+    $("#reps").val("");
+    $("#weight").val("");
+    $("#distance").val("");
+    $("#duration").val("");
+    $("#exerciseName").val("");
     console.log(type, name, reps, weight, duration);
     $.ajax({
       data: {
@@ -43,9 +70,8 @@ $(document).ready(function() {
         duration: duration,
         distance: distance
       },
-      url: "/api/session/new",
+      url: "/api/exercise/new",
       method: "POST"
-    }).then(function(data) {
-    });
+    }).then(function(data) {});
   });
 });
