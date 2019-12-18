@@ -9,14 +9,14 @@
 </div>
 
 <div id="formContainer" class="container">
-    <form action="" id="workoutForm">
+    <form action="" class="form" id="workoutForm">
         <select name="exerciseType" id="exerciseType">
             <option value="Choose exercise type" selected disabled>Choose exercise type</option>
             <option id="cardio" value="cardio">Cardio</option>
             <option value="weights">Weights</option>
         </select>
         <br>
-        <div id="bottomForm">
+        <div class="form"  id="bottomForm">
             <label for="name">Name of exercise</label>
             <input type="text" name="name" id="exerciseName" placeholder="Bench Press">
             <label id="repLabel" for="reps">Reps</label>
@@ -38,8 +38,10 @@
 
 
 
-<li><a href="/register">Sign Up!</a></li>
-<li><a href="/login">Login!</a></li>
-<li><a href="/logout">Logout</a></li>
+<div class="container">
+    <a href="/register">Register</a>
+    <a href="/login">Login</a>
+    <a href="/logout">Logout</a>
+</div>
 
 <script type="text/javascript" src="/js/script.js"></script>

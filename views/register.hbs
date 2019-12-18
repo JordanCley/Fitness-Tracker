@@ -1,14 +1,18 @@
 <h1>Sign Up Form</h1>
 
-<form action="/register" method="POST">
-    <input type="text" name="firstName" placeholder="First Name">
-    <input type="text" name="lastName" placeholder="Last Name">
-    <input type="email" name="email" placeholder="johnSmith@fun.com">
-    <input type="text" name="username" placeholder="username">
-    <input type="password" name="password" placeholder="password">
-    <button>Submit</button>
-</form>
+<div class="container">
+    <form class="form" action="/register" method="POST">
+        <input type="text" name="firstName" placeholder="First Name">
+        <input type="text" name="lastName" placeholder="Last Name">
+        <input type="email" name="email" placeholder="johnSmith@fun.com">
+        <input type="text" name="username" placeholder="username">
+        <input type="password" name="password" placeholder="password">
+        <button type="submit">Submit</button>
+    </form>
+</div>
 
-<li><a href="/register">Sign Up!</a></li>
-<li><a href="/login">Login!</a></li>
-<li><a href="/logout">Logout</a></li>
+<div class="container">
+    <a href="/register">Register</a>
+    <a href="/login">Login</a>
+    <a href="/logout">Logout</a>
+</div>

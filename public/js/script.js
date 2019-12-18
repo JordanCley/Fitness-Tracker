@@ -1,5 +1,4 @@
 $(document).ready(function() {
-  
   const welcomeContainer = $("#welcomeContainer");
   const formContainer = $("#formContainer");
   const bottomForm = $("#bottomForm");
@@ -11,13 +10,12 @@ $(document).ready(function() {
       method: "GET",
       url: "/api/user/session"
     }).then(data => {
-
       const lastSession = data.sessions.pop();
       const date = new Date(lastSession.createdAt).toString();
       const numExercises = lastSession.exercises.length;
       const exerciseArray = lastSession.exercises;
       let sum = 0;
-      for(let i = 0;i < exerciseArray.length;i++){
+      for (let i = 0; i < exerciseArray.length; i++) {
         let duration = exerciseArray[i].duration;
         sum += duration;
       }
@@ -28,7 +26,6 @@ $(document).ready(function() {
       // console.log(lastSession);
       console.log(date);
       console.log(numExercises);
-      
     });
   };
 
@@ -56,15 +53,15 @@ $(document).ready(function() {
       distance.hide();
       distanceLabel.hide();
     }
-  }
+  };
 
   showForm = () => {
     bottomForm.show();
-  }
+  };
 
-
-
-  $("#exerciseType").mouseleave(showInputs).click(showForm);
+  $("#exerciseType")
+    .mouseleave(showInputs)
+    .click(showForm);
 
   $("#createSession").on("click", function() {
     event.stopPropagation();

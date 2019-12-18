@@ -1,18 +1,17 @@
 
 .container {
-    
     width: 300px;
     border: 2px solid black;
     padding: 5px 5px 5px 5px;
     margin: 5px 5px 5px 5px;
 }
 
-#workoutForm {
+.form {
     display: flex;
     flex-direction: column;
 }
 
-#bottomForm {
+#workoutForm {
     display: flex;
     flex-direction: column;
 }
