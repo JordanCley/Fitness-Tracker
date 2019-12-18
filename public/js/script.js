@@ -1,8 +1,36 @@
 $(document).ready(function() {
-const welcomeContainer = $("#welcomeContainer");
-const formContainer = $("#formContainer");
-formContainer.hide();
+  
+  const welcomeContainer = $("#welcomeContainer");
+  const formContainer = $("#formContainer");
+  formContainer.hide();
 
+  getSessions = () => {
+    $.ajax({
+      method: "GET",
+      url: "/api/user/session"
+    }).then(data => {
+
+      const lastSession = data.sessions.pop();
+      const date = new Date(lastSession.createdAt).toString();
+      const numExercises = lastSession.exercises.length;
+      const exerciseArray = lastSession.exercises;
+      let sum = 0;
+      for(let i = 0;i < exerciseArray.length;i++){
+        let duration = exerciseArray[i].duration;
+        sum += duration;
+      }
+      console.log(sum);
+      $("#sessionDate").text(`Date: ${date}`);
+      $("#totalDuration").text(`Total Duration: ${sum} minutes`);
+      $("#numExercises").text(`Total Number Of Exercises: ${numExercises}`);
+      // console.log(lastSession);
+      console.log(date);
+      console.log(numExercises);
+      
+    });
+  };
+
+  
 
   $("#exerciseType").mouseleave(function() {
     const exerciseType = $("#exerciseType").val();
@@ -41,11 +69,11 @@ formContainer.hide();
     }).then(function(data) {});
   });
 
-  $("#complete").on("click", function(){
+  $("#complete").on("click", function() {
     location.reload();
     // formContainer.hide();
     // welcomeContainer.show();
-  })
+  });
 
   $("#workoutForm").on("submit", function() {
     event.preventDefault();
@@ -74,4 +102,6 @@ formContainer.hide();
       method: "POST"
     }).then(function(data) {});
   });
+
+  getSessions();
 });
