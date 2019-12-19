@@ -17,9 +17,9 @@ each exercise over a chosen amount of time and see that progress aswell.
 
 ## Deployed
 
-[Fitness-Tracker](https://immense-badlands-51120.herokuapp.com/)
+[Fitness-Tracker](https://fast-sea-24135.herokuapp.com/)
 
-![Fitness-Tracker UI](Burger.png)
+![Fitness-Tracker UI](./public/images/Fitness-Tracker.gif)
 
 
 ## Author
