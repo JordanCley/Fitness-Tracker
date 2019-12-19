@@ -8,9 +8,9 @@ router.get("/", function(req, res) {
   res.render("landing");
 });
 
-router.get("/home", function(req, res) {
-  res.render("home");
-});
+// router.get("/home", function(req, res) {
+//   res.render("home");
+// });
 
 router.get("/dashboard/:id", middleware.isLoggedIn, middleware.checkUser,  function(req, res) {
   db.User.findById(req.params.id).then(dbUser => {
@@ -66,7 +66,7 @@ router.post('/login', function(req, res, next) {
 // LOG OUT ROUTE
 router.get("/logout", function(req, res) {
   req.logout();
-  res.redirect("home");
+  res.redirect("/");
 });
 
 
