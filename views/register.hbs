@@ -1,18 +1,15 @@
-<h1>Sign Up Form</h1>
+<div class="grid-container2">
+    <h1 class="signUp grid-item">Register</h1>
 
-<div class="container">
-    <form class="form" action="/register" method="POST">
-        <input type="text" name="firstName" placeholder="First Name">
-        <input type="text" name="lastName" placeholder="Last Name">
-        <input type="email" name="email" placeholder="johnSmith@fun.com">
-        <input type="text" name="username" placeholder="username">
-        <input type="password" name="password" placeholder="password">
-        <button type="submit">Submit</button>
-    </form>
-</div>
-
-<div class="container">
-    <a href="/register">Register</a>
-    <a href="/login">Login</a>
-    <a href="/logout">Logout</a>
+    <div class="grid-item landingContainer">
+        <form class="form" action="/register" method="POST">
+            <input type="text" name="firstName" placeholder="First Name">
+            <input type="text" name="lastName" placeholder="Last Name">
+            <input type="email" name="email" placeholder="johnSmith@fun.com">
+            <input type="text" name="username" placeholder="username">
+            <input type="password" name="password" placeholder="password">
+            <button type="submit">Submit</button>
+        </form>
+        <a class="goBack" href="/">Goback</a>
+    </div>
 </div>

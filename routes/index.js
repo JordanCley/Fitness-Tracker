@@ -66,7 +66,7 @@ router.post('/login', function(req, res, next) {
 // LOG OUT ROUTE
 router.get("/logout", function(req, res) {
   req.logout();
-  res.redirect("landing");
+  res.redirect("/");
 });
 
 

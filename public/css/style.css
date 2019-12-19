@@ -8,6 +8,7 @@ a {
   text-shadow: -1px -1px 0 #2c2e38, 2px -1px 0 #2c2e38, 1px 1px 0 #2c2e38,
     1px 1px 0 #2c2e38;
   font-size: 1.7rem;
+  text-decoration: none;
 }
 
 a:hover {
@@ -19,10 +20,8 @@ a:hover {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(5, 1fr);
-  background-image: url("images/fitness.jpg");
-  background-repeat: no-repeat;
-  background-position: center top;
-  background-size: 100%;
+  height: 100vh;
+  width: 98vw;
 }
 
 .grid-container {
@@ -52,19 +51,25 @@ a:hover {
   text-shadow: -1px -1px 0 #2c2e38, 2px -1px 0 #2c2e38, 1px 1px 0 #2c2e38,
     1px 1px 0 #2c2e38;
 }
-/* .container {
-    width: 300px;
-    border: 2px solid black;
-    padding: 5px 5px 5px 5px;
-    margin: 5px 5px 5px 5px;
-} */
 
 .welcomeClass {
   grid-column: 1/2;
   grid-row: 2/3;
 }
 
-#landingContainer {
+.goBack {
+    margin-top: 1rem;
+}
+
+.signUp {
+    grid-column: 3/4;
+    grid-row: 1/2;
+    text-align: center;
+    margin-top: 5rem;
+    color: #242a40;
+}
+
+.landingContainer {
   grid-column: 3/4;
   grid-row: 2/3;
   display: flex;
@@ -103,6 +108,12 @@ a:hover {
 
 input {
   margin: 0.5rem 0.5rem 0.5rem 0.5rem;
+  font-size: .8rem;
+}
+
+input:focus {
+    border-color: #c98e26;
+    outline-color: white;
 }
 
 label {
@@ -141,18 +152,6 @@ label {
   font-size: 1.2rem;
 }
 
-/* .chart {
-    background-color: #3d4661;
-    width: 800px;
-    border: 2px solid black;
-    padding: 5px 5px 5px 5px;
-    margin: 5px 5px 5px 5px;
-} */
-
-/* #workoutForm {
-    display: flex;
-    flex-direction: column;
-} */
 
 .sessionDisplay {
   color: #c98e26;
@@ -161,7 +160,6 @@ label {
 select:focus {
   border-color: #c98e26;
   outline-color: white;
-  /* outline:none; */
 }
 
 select {
@@ -178,16 +176,6 @@ select:hover {
 select-select {
   background-color: #c98e26;
 }
-
-/* #createSessionBtn {
-   text-align: center;
-   margin-top: 1rem;
-   margin-left: .3rem;
-   border-radius: 1.2rem;
-    height: 2rem;
-    width: 20rem;
-    font-size: .8rem;
-} */
 
 button:hover {
   font-size: 0.9rem;
