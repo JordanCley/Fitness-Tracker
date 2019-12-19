@@ -17,7 +17,7 @@ const apiRoutes = require("./routes/apiRoutes");
 const PORT = process.env.PORT || 8080;
 
 mongoose.connect(
-  process.env.MONGODB_URL || "mongodb://localhost/fitness_tracker_db",
+  process.env.MONGODB_URI || LOCALDB_URL,
   { useUnifiedTopology: true, useNewUrlParser: true }
 );
 
