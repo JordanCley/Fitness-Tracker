@@ -1,57 +1,59 @@
-<div id="welcomeContainer" class="container">
-    <h1>Welcome to Fitness-Tracker {{User.username}}!</h1>
-    <h2>Last Workout Session</h2>
-    <p id="sessionDate"></p>
-    <p id="totalDuration"></p>
-    <p id="numExercises"></p>
+<div class="grid-container">
 
-    <button id="createSession">Create New Session</button>
-</div>
+    <div id="navbar" class="grid-item">
+        <a href="/register">Register</a>
+        <a href="/login">Login</a>
+        <a href="/logout">Logout</a>
+    </div>
 
-<div id="formContainer" class="container">
-    <form action="" class="form" id="workoutForm">
-        <select name="exerciseType" id="exerciseType">
-            <option value="Choose exercise type" selected disabled>Choose exercise type</option>
-            <option id="cardio" value="cardio">Cardio</option>
-            <option value="weights">Weights</option>
-        </select>
-        <br>
-        <div class="form" id="bottomForm">
-            <label for="name">Name of exercise</label>
-            <input type="text" name="name" id="exerciseName" placeholder="Bench Press">
-            <label id="repLabel" for="reps">Reps</label>
-            <input type="number" name="reps" id="reps" placeholder="10">
-            <label id="weightLabel" for="weight">Weight (lbs)</label>
-            <input type="number" name="weight" id="weight" placeholder="200">
-            <label for="duration">Duration</label>
-            <input type="number" name="duration" id="duration" placeholder="20">
-            <label id="distanceLabel" for="Distance">Distance</label>
-            <input type="number" name="distance" id="distance" placeholder="20">
-            <button id="addAnother" type="submit">Add Another</button>
-            <button id="complete" type="submit">Complete</button>
+    <div id="header" class="grid-item">
+        <h1>Welcome to Fitness-Tracker {{User.username}}!</h1>
+    </div>
+
+    <div id="welcomeContainer" class="container grid-item">
+        <h2>Last Workout Session</h2>
+        <p>Date:<span id="sessionDate" class="sessionDisplay"></span></p>
+        <p>Total Duration: <span id="totalDuration" class="sessionDisplay"></span></p>
+        <p>Total Number Of Exercises: <span id="numExercises" class="sessionDisplay"></span> </p>
+        <button id="createSessionBtn">Create New Session</button>
+    </div>
+
+    <div id="formContainer" class="container grid-item">
+        <form action="" class="form" id="workoutForm">
+            <select name="exerciseType" id="exerciseType">
+                <option value="Choose exercise type" selected disabled>Choose exercise type</option>
+                <option id="cardio" value="cardio">Cardio</option>
+                <option value="weights">Weights</option>
+            </select>
+            <br>
+            <div class="form" id="bottomForm">
+                <label for="name">Name of exercise</label>
+                <input type="text" name="name" id="exerciseName" placeholder="Bench Press">
+                <label id="repLabel" for="reps">Reps</label>
+                <input type="number" name="reps" id="reps" placeholder="10">
+                <label id="weightLabel" for="weight">Weight (lbs)</label>
+                <input type="number" name="weight" id="weight" placeholder="200">
+                <label for="duration">Duration (Minutes)</label>
+                <input type="number" name="duration" id="duration" placeholder="20">
+                <label id="distanceLabel" for="Distance">Distance (mi)</label>
+                <input type="number" name="distance" id="distance" placeholder="20">
+                <button id="addAnother" type="submit">Add Another</button>
+                <button id="complete" type="submit">Complete</button>
+            </div>
+        </form>
+    </div>
+
+    <div id="chartsContainer" class="grid-item">
+        <div id="chart1">
+            <canvas id="myChart" class="charts"></canvas>
         </div>
-    </form>
-</div>
-<br>
 
-
-
-
-<div class="container">
-    <a href="/register">Register</a>
-    <a href="/login">Login</a>
-    <a href="/logout">Logout</a>
-</div>
-
-<div id="chartsContainer">
-    <div class="chart">
-        <canvas id="myChart"></canvas>
-    </div>
-
-    <div class="chart">
-        <canvas id="pieChart"></canvas>
+        <div id="chart2">
+            <canvas id="pieChart" class="charts"></canvas>
+        </div>
     </div>
 </div>
+
 <script type="text/javascript" src="/js/charts.js"></script>
 <script type="text/javascript" src="/js/script.js"></script>
 

@@ -93,9 +93,9 @@ $(document).ready(function() {
          charts(timeStamps, durationArray, exerciseNames, exerciseDurations);
 
         // INSERTING DATA INTO WELCOM CONTAINER
-        $("#sessionDate").text(`Date: ${date}`);
-        $("#totalDuration").text(`Total Duration: ${sum} minutes`);
-        $("#numExercises").text(`Total Number Of Exercises: ${numExercises}`);
+        $("#sessionDate").text(` ${date}`);
+        $("#totalDuration").text(` ${sum} minutes`);
+        $("#numExercises").text(` ${numExercises}`);
       }
     });
   };
@@ -135,7 +135,7 @@ $(document).ready(function() {
 
   // EVENT TO CREATE A SESSIONBFROM CREATE BUTTON
   createSessionEvent = () => {
-    $("#createSession").on("click", function() {
+    $("#createSessionBtn").on("click", function() {
       event.stopPropagation();
       welcomeContainer.hide(200);
       formContainer.show(100);
@@ -211,7 +211,7 @@ $(document).ready(function() {
             borderWidth: 2,
             borderColor: "#FFFFFF",
             hoverBorderWidth: 4,
-            hoverBackgroundColor: "#FFFFFF"
+            hoverBackgroundColor: "#c98e26"
           }
         ]
       },
@@ -264,7 +264,7 @@ $(document).ready(function() {
             borderWidth: 2,
             borderColor: "#FFFFFF",
             hoverBorderWidth: 4,
-            hoverBackgroundColor: "#FFFFFF"
+            hoverBackgroundColor: "#c98e26"
           }
         ]
       },
