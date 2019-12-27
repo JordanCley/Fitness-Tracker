@@ -133,7 +133,7 @@ $(document).ready(function() {
       .click(showForm);
   };
 
-  // EVENT TO CREATE A SESSIONBFROM CREATE BUTTON
+  // EVENT TO CREATE A SESSION FROM CREATE BUTTON
   createSessionEvent = () => {
     $("#createSessionBtn").on("click", function() {
       event.stopPropagation();
