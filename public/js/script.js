@@ -15,11 +15,6 @@ $(document).ready(function() {
     return item.exercises;
   };
 
-  // addDuration = item => {
-  //   let sum = 0;
-  //   let duration = item.duration;
-  //   console.log(duration)
-  //   return sum += duration;
 
   // SHOWING BOTTOM FORM
   showForm = () => {
